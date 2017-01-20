@@ -1,0 +1,26 @@
+To run program in unix terminal, type the following:
+
+	python seqTools.py <command> <input>
+
+in which command can be any of the following:
+
+	buildCodonDict --Produces aa sequences of nucleotide sequence input using the standard genetic code. Input should be in fasta format, output will aa sequences also in fasta format. Execute by typing: python buildCodonDict foo.fasta
+
+	buildSeqDict -- Primarily an internal tool that gets used to efficiently read-in fasta files. Will return a key-value table with sequence tags as keys and sequences as values. Execute by typing: python buildSeqDict foo.fasta
+
+	reverseComplement --Primarily an internal tool. If you would like to reverse translate all sequences in a fasta file, use batchRevComp. reverseComplement can handle standard IUPAC ambiguity codes (up to two alleles). Returns the reverse complement of the input sequence. Execute by typing python reverseComplement <sequence>
+
+	cigarCalc --A useful tool without much infrastructure. More development coming. This tool decodes cigar strings produced by mapping programs and returns the length of the alignment. Execute by typing python cigarCalc <cigar> where <cigar> is the cigar string of interest.
+
+	unwrap --Tool to unwrap fasta file sequences. Takes a fasta file as input and removes intra-sequence carriage returns and tabs. Execute by typing python unwrap foo.fasta
+
+	batchRevComp --Tool that obtains the reverse complement sequence of all sequences in a file and outputs them to a new file. Can handle all IUPAC ambiguity codes (up to two nucleotides). Execute by typing: python batchRevComp foo.fasta
+
+	batchTranslate --Tool to translate many fasta files. Takes a file of file names as input and sequenctially opens each file and translates it by calling the buildCodonDict submodule. Execute by typing: python batchTranslate foo.fofn
+
+	help --Writes this menu to the standard output.
+and input should be in the form required by the submodule command.
+
+If you would like to know which command to use, type:
+
+	python seqTools.py help
