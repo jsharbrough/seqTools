@@ -1,3 +1,5 @@
+seqTools: A collection of tools to manipulate nucleotide and amino acid sequence data 
+
 To run program in unix terminal, type the following:
 
 	python seqTools.py <command> <input>
