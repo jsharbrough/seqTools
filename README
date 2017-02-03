@@ -1,6 +1,6 @@
 To run program in unix terminal, type the following:
 
-	python seqTools_v2.2.py <command> <input>
+	python seqTools_v2.3.py <command> <input>
 
 in which command can be any of the following:
 
@@ -8,7 +8,7 @@ in which command can be any of the following:
 			Produces aa sequences of nucleotide sequence input assuming the genetic code from user 
 			input. Input should be in fasta format, output will aa sequences also in fasta format.
 		Usage
-			python seqTools_v2.2.py buildCodonDict foo.fasta [options]
+			python seqTools_v2.3.py buildCodonDict foo.fasta [options]
 		Options
 			-c	Dictates the genetic code to be used. [standard]
 				vertebrateMt, echinodermMt, coelenterateMt, ascidianMt, standard, chlorophyceanMt, 
@@ -19,37 +19,36 @@ in which command can be any of the following:
 			Primarily an internal tool that gets used to efficiently read-in fasta files. Will 
 			return a key-value table with sequence tags as keys and sequences as values. 
 		Usage
-			python seqTools_v2.2.py buildSeqDict foo.fasta [options]
+			python seqTools_v2.3.py buildSeqDict foo.fasta [options]
 		Options
 
 	reverseComplement
 			Primarily an internal tool. If you would like to reverse translate all sequences in a 
 			fasta file, use batchRevComp. reverseComplement can handle standard IUPAC ambiguity 
-			codes (up to two alleles). Returns the reverse complement of the input sequence. 
+			codes. Returns the reverse complement of the input sequence. 
 		Usage
-			python seqTools_v2.2.py reverseComplement <sequence> [options]
+			python seqTools_v2.3.py reverseComplement <sequence> [options]
 		Options
 
 	cigarCalc
 			A useful tool without much infrastructure. More development coming. This tool decodes 
 			cigar strings produced by mapping programs and returns the length of the alignment. 
 		Usage
-			python seqTools_v2.2.py cigarCalc <cigar_string> [options]
+			python seqTools_v2.3.py cigarCalc <cigar_string> [options]
 		Options
 
 	unwrap
 			Tool to unwrap fasta file sequences. Takes a fasta file as input and removes 
 			intra-sequence carriage returns and tabs.
 		Usage
-			python seqTools_v2.2.py unwrap foo.fasta [options]
+			python seqTools_v2.3.py unwrap foo.fasta [options]
 		Options
 
 	batchRevComp
 			Tool that obtains the reverse complement sequence of all sequences in a file and 
-			outputs them to a new file. Can handle all IUPAC ambiguity codes (up to two 
-			nucleotides).
+			outputs them to a new file. Can handle all IUPAC ambiguity codes.
 		Usage
-			python seqTools_v2.2.py batchRevComp foo.fasta [options]
+			python seqTools_v2.3.py batchRevComp foo.fasta [options]
 		Options
 
 	batchTranslate
@@ -57,15 +56,15 @@ in which command can be any of the following:
 			sequenctially opens each file and translates it by calling the buildCodonDict 
 			submodule.
 		Usage
-			python seqTools_v2.2.py batchTranslate foo.fofn [options]
+			python seqTools_v2.3.py batchTranslate foo.fofn [options]
 		Options
 
 	vcf2Fasta
 			Tool that produces a fasta sequence from a Variant Call Formatted (VCF) file. Tool uses 
-			standard IUPAC ambiguity codes (up to two alleles). Current filters include minimum 
+			standard IUPAC ambiguity codes. Current filters include minimum 
 			depth over the site and mapping quality assigned by the mapping program. 
 		Usage
-			python seqTools_v2.2.py vcf2Fasta foo.vcf [options]
+			python seqTools_v2.3.py vcf2Fasta foo.vcf [options]
 		Options
 			-rc	Reverse complement. Output will be the reverse complement of the mapped sequence.
 				[False]
@@ -83,7 +82,7 @@ in which command can be any of the following:
 			Fixed renaming will add a user-specified string to the beginning of each sequence tag 
 			like follows: "><STRING>_sequenceTag".
 		Usage
-			python seqTools_v2.2.py seqRenamer foo.fasta [options]
+			python seqTools_v2.3.py seqRenamer foo.fasta [options]
 		Options
 			-n	Renaming method. If the default numeric renaming system is not used, the value
 				following the option flag will be appended as a prefix to all sequences in the 
@@ -93,20 +92,40 @@ in which command can be any of the following:
 			Makes a fastq file with fake quality scores (ASCII_BASE 33) of -q from a fasta input. 
 			Note: input file handle MUST BE ".fasta"
 		Usage
-			python seqTools_v2.2.py fasta2Fastq foo.fasta [options]
+			python seqTools_v2.3.py fasta2Fastq foo.fasta [options]
 		Options
 			-q	Phred quality score for fake quality scores. Must be an integer. [40]
+
+	nexus2Fasta
+			Tool for converting nexus files into fasta files. Input should be a nexus file. Output 
+			will be a fasta file.
+		Usage
+			python seqTools_v2.3.py nexus2Fasta foo.nexus [options]
+		Options
+
+	fasta2Nexus
+			Tool for converting fasta files to nexus format. Input should be a fasta file, output 
+			will be a nexus file. Nexus file will be compatible with Paup or MrBayes, depending on 
+			option selected. Additional compatibility can be added by contacting the developer.
+		Usage
+			python seqTools_v2.3.py fasta2Nexus foo.fasta [options]
+		Options
+			-p	Identifies the compatibility mode desired. If you would like additional compatibility 
+				added, please email developer. If paup compatibility is specified, a paup block at 
+				the bottom of the nexus file will be written, which instructs paup to construct a 
+				Neighbor Joinging Tree and a ML pairwise distance matrix of the alignment. [none]
+				none,mrbayes, paup
 
 	help
 			Writes this menu to the standard output.
 		Usage
-			python seqTools_v2.2.py help 
+			python seqTools_v2.3.py help 
 			
 Input should be in the form required by the submodule command. Note the program is case sensitive.
 
 If you would like to know which command to use, type:
 
-	python seqTools_v2.2.py help
+	python seqTools_v2.3.py help
 
 Questions should be directed to Joel Sharbrough at jsharbro[at]gmail.com
 
